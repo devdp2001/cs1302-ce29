@@ -27,7 +27,7 @@ public class ComplexityClasses extends Application {
     private static final int X_FINAL = 100; // exclusive
 
     /* Bound for the Y-axis in the line chart. */
-    private static final int Y_FINAL = 100; // inclusive
+    private static final int Y_FINAL = 10000; // inclusive
 
     /* Last Problem Size */
     private static final int N = X_FINAL - X_START;
@@ -58,12 +58,12 @@ public class ComplexityClasses extends Application {
         //ChECKPOINT 2
         Integer[] function = IntStream.range(0, 100).mapToObj(k -> k).toArray(Integer[]::new);
 
-        ChartUtility.addSeries(lc, function, genData(function, n -> (1.0 * n) + 2.0), "Linear 1");
-        ChartUtility.addSeries(lc, function, genData(function, n -> (1.2 * n) + 1.0), "Linear 2");
-        ChartUtility.addSeries(lc, function, genData(function, n -> (1.4 * n) - 1.0), "Linear 3");
-        ChartUtility.addSeries(lc, function, genData(function, n -> 1.6 * n), "Linear 4");
+        ChartUtility.addSeries(lc, function, genData(function, n -> (1.0 * n) + 2.0), "L1");
+        ChartUtility.addSeries(lc, function, genData(function, n -> (1.2 * n) + 1.0), "L2");
+        ChartUtility.addSeries(lc, function, genData(function, n -> (1.4 * n) - 1.0), "L3");
+        ChartUtility.addSeries(lc, function, genData(function, n -> 1.6 * n), "L4");
 
-        //CHECKPOINT 3: Quadratics
+        //CHECKPOINT 3
         ChartUtility.addSeries(lc, function, genData(function, n ->
                                                      Math.pow(n, 2.0) + 2.0 * n - 1.0), "Q1");
         ChartUtility.addSeries(lc, function, genData(function, n ->
@@ -71,6 +71,24 @@ public class ComplexityClasses extends Application {
         ChartUtility.addSeries(lc, function, genData(function, n ->
                                                      1.5 * Math.pow(n, 2.0) + 2.0 * n - 3.0), "Q3");
         ChartUtility.addSeries(lc, function, genData(function, n -> Math.pow(n, 2.0) + 42.0), "Q4");
+
+        // CHECKPOINT 4: Cubic
+        ChartUtility.addSeries(lc, function, genData(function, n ->
+                                                     1.1 * Math.pow(n, 3.0) + 1.3 * n - 4.0), "C1");
+        ChartUtility.addSeries(lc, function, genData(function, n ->
+                                                     2.2 * Math.pow(n, 3.0) + 1.5 * n + 2.0), "C2");
+        ChartUtility.addSeries(lc, function, genData(function, n ->
+                                                     1.5 * Math.pow(n, 3.0) + n - 3.5), "C3");
+        ChartUtility.addSeries(lc, function, genData(function, n -> Math.pow(n, 3.0) - 42.0), "C4");
+        
+        // Exponential
+        ChartUtility.addSeries(lc, function, genData(function, n ->
+                                                     Math.pow(2.0, n) + Math.pow(n, 2.0)), "E1");
+        ChartUtility.addSeries(lc, function, genData(function, n -> Math.pow(1.5, n) + 32.0), "E2");
+        ChartUtility.addSeries(lc, function, genData(function, n -> Math.pow(1.3, n) + n), "E3");
+        ChartUtility.addSeries(lc, function, genData(function, n -> 2.0 * Math.pow(1.2, n) - 0.5 *
+                                                     Math.pow(n, 3.0)), "E4");
+
         
         Scene scene = new Scene(lc);
         scene.getStylesheets().add("chartStyle.css"); // use CSS to remove line symbols
