@@ -54,11 +54,11 @@ public class ComplexityClasses extends Application {
         // Add the linear time data series to the line chart
         ChartUtility.addSeries(lc, x, genData(x, n -> 1.0 * n), "Linear");
 
-	
+        
         //ChECKPOINT 2
-	Integer[] function = IntStream.range(0, 100).mapToObj(k -> k).toArray(Integer[]::new);
+        Integer[] function = IntStream.range(0, 100).mapToObj(k -> k).toArray(Integer[]::new);
 
-	ChartUtility.addSeries(lc, function, genData(function, n -> (1.0 * n) + 2.0), "Linear 1");
+        ChartUtility.addSeries(lc, function, genData(function, n -> (1.0 * n) + 2.0), "Linear 1");
         ChartUtility.addSeries(lc, function, genData(function, n -> (1.2 * n) + 1.0), "Linear 2");
         ChartUtility.addSeries(lc, function, genData(function, n -> (1.4 * n) - 1.0), "Linear 3");
         ChartUtility.addSeries(lc, function, genData(function, n -> 1.6 * n), "Linear 4");
