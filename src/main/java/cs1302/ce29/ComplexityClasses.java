@@ -18,7 +18,7 @@ import java.util.Arrays;
  *  - Quadratic Time <br>
  *  - Cubic Time <br>
  *  - Exponential Time <br>
- *  - Factorial Time <br>
+ *  - Factorial Time <br>.
  */
 public class ComplexityClasses extends Application {
 
@@ -36,17 +36,19 @@ public class ComplexityClasses extends Application {
     private LineChart<Number, Number> lc;
 
     /**
-     * The entry point for the JavaFX application
+     * The entry point for the JavaFX application.
+     * @param stage the stage
      */
     public void start(Stage stage) {
 
         // Initialize the values for the x-axis (Problem Size)
-	Integer[] x = IntStream.range(X_START, X_FINAL)
-	    .mapToObj(i -> i)
-	    .toArray(Integer[]::new);
+        Integer[] x = IntStream.range(X_START, X_FINAL)
+            .mapToObj(i -> i)
+            .toArray(Integer[]::new);
 
         // Create initial line chart and add the constant time data series
-        lc = ChartUtility.createChart(x, genData(x, n -> 10.0), "Size", "Operations", Y_FINAL, "Constant");
+        lc = ChartUtility.createChart(x, genData(x, n -> 10.0), "Size", "Operations", Y_FINAL,
+                                      "Constant");
         lc.setTitle("Complexity Classes");
 
         // Add the linear time data series to the line chart
@@ -78,8 +80,9 @@ public class ComplexityClasses extends Application {
      * @param f the function to map index values to doubles
      */
     public Double[] genData(Integer[] x, Function<Integer, Double> f) {
-        // TODO: Implement Me!
-        throw new UnsupportedOperationException("genData method not yet implemented");
+        Double[] newArray  = Arrays.stream(x).map(e -> f.apply(e)).toArray(Double[]::new);
+        
+        return newArray;
     } // genData
 
 } // ComplexityClasses
